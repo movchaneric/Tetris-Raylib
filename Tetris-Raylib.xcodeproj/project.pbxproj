@@ -14,6 +14,7 @@
 		BD275E222A6D339A0086F869 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD275E212A6D339A0086F869 /* OpenGL.framework */; };
 		BD275E242A6D33A80086F869 /* libraylib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD275E232A6D33A80086F869 /* libraylib.a */; };
 		BD275E272A6D35B50086F869 /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD275E252A6D35B50086F869 /* Grid.cpp */; };
+		BD275E2A2A6D44270086F869 /* Colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD275E282A6D44270086F869 /* Colors.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +39,8 @@
 		BD275E232A6D33A80086F869 /* libraylib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libraylib.a; path = "../../Downloads/raylib-master/src/libraylib.a"; sourceTree = "<group>"; };
 		BD275E252A6D35B50086F869 /* Grid.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Grid.cpp; sourceTree = "<group>"; };
 		BD275E262A6D35B50086F869 /* Grid.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Grid.hpp; sourceTree = "<group>"; };
+		BD275E282A6D44270086F869 /* Colors.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Colors.cpp; sourceTree = "<group>"; };
+		BD275E292A6D44270086F869 /* Colors.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Colors.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,8 @@
 				BD275E132A6D32470086F869 /* main.cpp */,
 				BD275E252A6D35B50086F869 /* Grid.cpp */,
 				BD275E262A6D35B50086F869 /* Grid.hpp */,
+				BD275E282A6D44270086F869 /* Colors.cpp */,
+				BD275E292A6D44270086F869 /* Colors.hpp */,
 			);
 			path = "Tetris-Raylib";
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD275E2A2A6D44270086F869 /* Colors.cpp in Sources */,
 				BD275E142A6D32470086F869 /* main.cpp in Sources */,
 				BD275E272A6D35B50086F869 /* Grid.cpp in Sources */,
 			);
