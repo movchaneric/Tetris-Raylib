@@ -1,16 +1,6 @@
-//
-//  main.cpp
-//  Tetris-Raylib
-//
-//  Created by Eric Movchan on 23/07/2023.
-//
-
 #include <iostream>
 #include <raylib.h>
 #include "Grid.hpp"
-#include "GamePieces.cpp"
-#include "RegularBlocks.hpp"
-#include "Game.hpp"
 
 int main(int argc, const char * argv[]) {
     Grid gameGrid = Grid();
@@ -30,6 +20,7 @@ int main(int argc, const char * argv[]) {
         
         EndDrawing();
     }
+    //TODO: deleting causing an error after closing app
     gameGrid.~Grid();
 }
 
