@@ -9,6 +9,7 @@
 class Grid {
 public:
     Grid();
+    ~Grid();
     void drawGrid();
     void gridInit();
     void printGrid();
@@ -17,6 +18,7 @@ private:
     int numOfRows;
     int numOfCols;
     int cellSize;
+    std::vector<const Color*> colors;
 };
 
 #endif /* Grid_hpp */

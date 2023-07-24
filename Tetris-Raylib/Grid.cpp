@@ -9,13 +9,22 @@
 #include "Colors.hpp"
 
 Grid::Grid(){
-    cellSize = 30
-    ;
+    cellSize = 30;
     numOfRows = 20;
     numOfCols = 10;
     grid = new int*[numOfRows];
+    colors = getColors();
+    
+
 }
 
+//Deaclote memoery allocated for grid
+Grid::~Grid(){
+    for(int row = 0; row < numOfRows; row++){
+        delete[] grid[row];
+    }
+    delete[] grid;
+}
 
 void Grid::gridInit(){
     for(int row = 0; row < numOfRows; row++){
@@ -26,7 +35,8 @@ void Grid::gridInit(){
 void Grid::drawGrid(){
     for(int row = 0; row < numOfRows; row++){
         for(int col = 0; col < numOfCols; col++){
-            DrawRectangle(col * cellSize + 1, row * cellSize + 1, cellSize - 1, cellSize - 1, backgroundColor);
+            int blockValue = grid[row][col];
+            DrawRectangle(col * cellSize + 1, row * cellSize + 1, cellSize - 1, cellSize - 1, *colors[blockValue]);
         }
     }
 }
