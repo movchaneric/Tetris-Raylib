@@ -1,27 +1,26 @@
 #include <iostream>
 #include <raylib.h>
-#include "Grid.hpp"
+#include "MainGame.hpp"
 
 int main(int argc, const char * argv[]) {
-    Grid gameGrid = Grid();
-    gameGrid.gridInit();
-    std::cout << "Memory allocated" << std::endl;
     
+    MainGame* game = new MainGame();
     
     InitWindow(500, 600, "Tetris");
     Color DarkBlue = {19, 26, 94};
     SetTargetFPS(60);
     
+
     while(WindowShouldClose() == false){
+        game->handleUserAction();
+        
         BeginDrawing();
         ClearBackground(DarkBlue);
-        gameGrid.drawGrid();
         
+        game->drawGame();
         
         EndDrawing();
     }
-    //TODO: deleting causing an error after closing app
-    gameGrid.~Grid();
 }
 
 

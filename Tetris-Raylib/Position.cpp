@@ -6,3 +6,8 @@
 //
 
 #include "Position.hpp"
+
+Position::Position(const int& row, const int& col){
+    this->row = row;
+    this->col = col;
+}

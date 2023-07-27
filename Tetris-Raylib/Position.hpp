@@ -12,9 +12,8 @@
 
 class Position{
 public:
-    Position(int& row, int& col);
-private:
     int row, col;
+    Position(const int& row, const int& col);
 };
 
 #endif /* Position_hpp */

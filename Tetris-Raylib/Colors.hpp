@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <raylib.h>
 
-std::vector<const Color*> getColors();
+std::vector<const Color> getColors();
 
 extern const Color backgroundColor; // 0 in metrix == no block
 extern const Color Cyan;

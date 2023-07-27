@@ -13,12 +13,15 @@ public:
     void drawGrid();
     void gridInit();
     void printGrid();
+    void freeGrid();
+    bool cellOutOfGrid(int row, int col);
+    
 private:
     int** grid;
     int numOfRows;
     int numOfCols;
     int cellSize;
-    std::vector<const Color*> colors;
+    std::vector<const Color> colors;
 };
 
 #endif /* Grid_hpp */

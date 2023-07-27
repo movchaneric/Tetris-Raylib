@@ -9,41 +9,37 @@
 
 Block::Block(){
     cellSize = 30;
+    rotationState = 0;
+    colors = getColors();
+    offsetRow = 0;
+    offsetCol = 0;
 }
 
 
-std::vector<Block> getGamePieces(std::map<int, std::map<int, std::vector<Position*>>> gamePieces){
+std::vector<Position> Block::getRecentBlockPosition(){
+    std::vector<Position> blockPosition = cells[rotationState];
     
-    std::vector<Block> blocks;
-    for (auto& outerPair : gamePieces) {
-        int blockId = outerPair.first; // Get the blockId (the key of the outer map)
-                
-        // Create the Block object
-        Block block;
-        block.blockId = blockId;
-        
-        std::map<int, std::vector<Position*>>& blockPosition = outerPair.second;
-        //loop the second map
-        for(auto& innerPair: blockPosition){
-            //get the rotation state
-            int rotationState = innerPair.first;
-            std::vector<Position*>& position = innerPair.second;
-            
-            //Insert to map {RotationState: vector of positions} for each rotationState
-            //4 rotations states in total
-            block.blockPosition[rotationState] = position;
-        }
+    std::vector<Position> updatedBlockPosition;
+    
+    for(Position& pos: blockPosition){
+        Position newPos = Position(pos.row + offsetRow, pos.col + offsetCol);
+        updatedBlockPosition.push_back(newPos);
     }
-    return blocks;
+    
+    return updatedBlockPosition;
 }
 
-
-void addGamePiece(int blockId, std::map<int, std::vector<Position*>> blockPosition){
+void Block::drawBlock(int offsetRow, int offsetCol){
+    std::vector<Position> recentPos = getRecentBlockPosition();
     
-    Block newBlock;
-    
-    newBlock.blockId = blockId;
-    newBlock.blockPosition = blockPosition;
-    
-    //TODO: find out how to add the newBlock to the block vector
+    for(Position block: recentPos){
+        DrawRectangle((block.col + offsetCol) * cellSize, (block.row + offsetRow) * cellSize  , cellSize - 1, cellSize - 1, colors[blockId]);
+    }
 }
+
+void Block::moveBlock(int addRow, int addCol){
+    offsetRow += addRow;
+    offsetCol += addCol;
+    ;
+}
+
