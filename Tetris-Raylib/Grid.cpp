@@ -58,3 +58,11 @@ bool Grid::cellOutOfGrid(int row, int col){
     }
     return true;
 }
+
+
+bool Grid::cellIsFree(int row, int col){
+    if(grid[row][col] == 0){
+        return true;
+    }
+    return false;
+}

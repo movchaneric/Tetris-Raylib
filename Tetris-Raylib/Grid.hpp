@@ -10,14 +10,17 @@ class Grid {
 public:
     Grid();
     ~Grid();
+    
     void drawGrid();
     void gridInit();
     void printGrid();
     void freeGrid();
     bool cellOutOfGrid(int row, int col);
+    bool cellIsFree(int row, int col);
+
+    int** grid;
     
 private:
-    int** grid;
     int numOfRows;
     int numOfCols;
     int cellSize;

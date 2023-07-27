@@ -13,6 +13,7 @@ MainGame::MainGame(){
     gameBlocks = getAllGameBlocks();
     
     currentBlock = getRandomBlock();
+    nextBlock = getRandomBlock();
 }
 
 
@@ -72,7 +73,10 @@ void MainGame::handleUserAction(){
         case KEY_LEFT:
             moveBlockLeft();
             break;
-        
+        case KEY_R:
+            rotateBlock();
+            break;
+            
         default:
             break;
     }
@@ -83,22 +87,60 @@ void MainGame::moveBlockDown(){
     currentBlock.moveBlock(1, 0);
     
     //check if block in grid
-    if(isBlockOutOfGrid()){
+    if(isBlockOutOfGrid()  || blockFitInPlace() == false){
         currentBlock.moveBlock(-1, 0);
+        lockBlockInPlace();
     }
 
 }
 
 void MainGame::moveBlockRight(){
     currentBlock.moveBlock(0, 1);
-    if(isBlockOutOfGrid()){
+    if(isBlockOutOfGrid() || blockFitInPlace() == false){
         currentBlock.moveBlock(0, -1);
     }
 }
 
 void MainGame::moveBlockLeft(){
     currentBlock.moveBlock(0, -1);
-    if(isBlockOutOfGrid()){
+    if(isBlockOutOfGrid() || blockFitInPlace() == false){
         currentBlock.moveBlock(0, 1);
     }
+}
+
+void MainGame::rotateBlock(){
+    currentBlock.rotationState++;
+    
+    if(isBlockOutOfGrid() || blockFitInPlace() == false){
+        currentBlock.rotationState--;
+    }
+    
+    else if(currentBlock.rotationState >= currentBlock.cells.size()){
+        currentBlock.rotationState = 0;
+    }
+}
+
+void MainGame::lockBlockInPlace(){
+    //get block recent position
+    std::vector<Position> recentPosition = currentBlock.getRecentBlockPosition();
+ 
+    //set in grid block id in place
+    for(Position pos: recentPosition){
+        gameGrid->grid[pos.row][pos.col] = currentBlock.blockId;
+    }
+    
+    //set current block to next random block
+    currentBlock = getRandomBlock();
+};
+
+bool MainGame::blockFitInPlace(){
+    //get last current block position
+    std::vector<Position> recentPosition = currentBlock.getRecentBlockPosition();
+    //check if number in grid in zero => can fit
+    for(Position pos: recentPosition){
+        if((gameGrid->cellIsFree(pos.row, pos.col)) == false){
+            return false;
+        }
+    }
+    return true;
 }

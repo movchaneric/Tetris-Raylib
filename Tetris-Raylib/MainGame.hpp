@@ -31,7 +31,10 @@ public:
     void moveBlockDown();
     void moveBlockRight();
     void moveBlockLeft();
+    void rotateBlock();
     bool isBlockOutOfGrid();
+    void lockBlockInPlace();
+    bool blockFitInPlace();
 
 private:
     Block currentBlock;
