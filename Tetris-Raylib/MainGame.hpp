@@ -8,6 +8,7 @@
 #ifndef MainGame_hpp
 #define MainGame_hpp
 
+#include <iostream>
 #include <stdio.h>
 #include <vector>
 #include "Grid.hpp"
@@ -34,6 +35,7 @@ public:
 
 private:
     Block currentBlock;
+    Block nextBlock;
     std::vector<Block> gameBlocks;
     
     

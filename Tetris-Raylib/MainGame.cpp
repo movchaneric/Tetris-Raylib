@@ -20,6 +20,7 @@ std::vector<Block> MainGame::getAllGameBlocks(){
     return {LBlock(), JShapeBlock(), IShapeBlock(), OShapeBlock(), SShapeBlock(), TShapeBlock(), ZShapeBlock()};
 }
 
+
 Block MainGame::getRandomBlock(){
     //Check for empty list after using all blocks, Reload
     if(gameBlocks.empty()){
@@ -37,6 +38,7 @@ Block MainGame::getRandomBlock(){
     return randBlock;
 }
 
+
 bool MainGame::isBlockOutOfGrid(){
     std::vector<Position> blockPosition = currentBlock.getRecentBlockPosition();
     
@@ -45,7 +47,6 @@ bool MainGame::isBlockOutOfGrid(){
             std::cout << "out of grid" << std::endl;
             return true;
         }
-        
     }
     return false;
 }

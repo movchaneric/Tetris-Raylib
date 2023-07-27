@@ -2,6 +2,18 @@
 #include <raylib.h>
 #include "MainGame.hpp"
 
+double lastTimeChanged = 0;
+
+bool timeInterval(const double& interval){
+    double lastTime = GetTime();
+    if(lastTime - lastTimeChanged >= interval){
+        lastTimeChanged = lastTime;
+        return true;
+    }
+    return false;
+}
+
+
 int main(int argc, const char * argv[]) {
     
     MainGame* game = new MainGame();
@@ -16,6 +28,10 @@ int main(int argc, const char * argv[]) {
         
         BeginDrawing();
         ClearBackground(DarkBlue);
+        
+        if(timeInterval(0.2)){
+            game->moveBlockDown();
+        }
         
         game->drawGame();
         
